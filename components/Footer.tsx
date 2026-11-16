@@ -4,7 +4,7 @@ import { services } from "@/lib/services";
 import { regions } from "@/lib/locations";
 import { LogoMark, PhoneIcon, WhatsAppIcon } from "./icons";
 
-const cities = ["Split", "Zadar", "Šibenik", "Dubrovnik", "Makarska", "Trogir", "Mostar"];
+const cities = ["Zadar", "Šibenik", "Dubrovnik", "Makarska", "Trogir", "Sinj", "Mostar"];
 const citySlug: Record<string, string> = {
   Split: "split", Zadar: "zadar", Šibenik: "sibenik", Dubrovnik: "dubrovnik",
   Makarska: "makarska", Trogir: "trogir", Mostar: "mostar",

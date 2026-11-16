@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { site, whatsappLink } from "@/lib/site";
 import { PhoneIcon, WhatsAppIcon } from "./icons";
 
@@ -36,7 +37,37 @@ export default function ContactForm({ lokacija = "", usluga = "" }: { lokacija?:
       .filter(Boolean)
       .join("\n");
     setWaText(text);
+    if (data.web) return; // honeypot
     setState("sending");
+
+    const ej = site.emailjs;
+    // 1) EmailJS (slanje izravno iz preglednika) ako je postavljen.
+    if (ej.serviceId && ej.templateId && ej.publicKey) {
+      try {
+        await emailjs.send(
+          ej.serviceId,
+          ej.templateId,
+          {
+            to_email: site.contactEmail,
+            from_name: data.ime,
+            phone: data.telefon,
+            from_email: data.email || "nije naveden",
+            location: data.lokacija,
+            service: data.usluga,
+            area: data.kvadratura || "nije navedena",
+            message: data.poruka || "-",
+            full: text,
+          },
+          { publicKey: ej.publicKey },
+        );
+        setState("sent");
+      } catch {
+        setState("fallback");
+      }
+      return;
+    }
+
+    // 2) Server (Resend) ako je EmailJS prazan.
     try {
       const res = await fetch("/api/upit", {
         method: "POST",

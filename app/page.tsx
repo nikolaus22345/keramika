@@ -6,7 +6,12 @@ import { services } from "@/lib/services";
 import { locationsIn, regions, topLocations } from "@/lib/locations";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = {
+  title: "Keramičar Split – postavljanje pločica i keramičarski radovi",
+  description:
+    "Keramičar Split: postavljanje pločica, kupaonice, terase i stepenice te knauf, gletanje i moleraj. Radimo u Splitu i cijeloj Dalmaciji. Ponuda na upit – 095 515 0377.",
+  alternates: { canonical: "/" },
+};
 
 const faq = [
   {
@@ -52,9 +57,9 @@ export default function Home() {
       <JsonLd data={faqJsonLd(faq)} />
 
       <Hero
-        badge="Keramičarski radovi • Dalmacija"
-        title="Keramičar Dalmacija"
-        text="Postavljanje pločica, kupaonice, terase i stepenice te knauf, gletanje i soboslikarski radovi. Za stanove, kuće, apartmane i poslovne prostore — od Zadra do Dubrovnika."
+        badge="Keramičarski radovi • Split i Dalmacija"
+        title="Keramičar Split"
+        text="Postavljanje pločica, kupaonice, terase i stepenice te knauf, gletanje i soboslikarski radovi. Za stanove, kuće, apartmane i poslovne prostore — u Splitu i cijeloj Dalmaciji."
       />
 
       <Section
@@ -97,7 +102,7 @@ export default function Home() {
           ))}
         </div>
         <h3 className="mb-4 mt-12 text-lg font-semibold">Najtraženije lokacije</h3>
-        <LinkChips links={topLocations.map((l) => ({ href: `/keramicar-${l.slug}`, label: `Keramičar ${l.name}` }))} />
+        <LinkChips links={topLocations.filter((l) => l.slug !== "split").map((l) => ({ href: `/keramicar-${l.slug}`, label: `Keramičar ${l.name}` }))} />
         <Link href="/lokacije" className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-white hover:bg-brand">
           Sve lokacije <ArrowIcon width={18} height={18} />
         </Link>

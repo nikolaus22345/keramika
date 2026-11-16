@@ -79,6 +79,8 @@ export interface Landing {
 export const landings: Landing[] = kindOrder.flatMap((kind) =>
   locations
     .filter((l) => kind === "keramicar" || l.top)
+    // Split kao keramičar pokriva naslovnica (redirect u next.config), pa ga ovdje preskačemo.
+    .filter((l) => !(kind === "keramicar" && l.slug === "split"))
     .map((loc) => ({ slug: `${kinds[kind].prefix}-${loc.slug}`, kind, loc })),
 );
 

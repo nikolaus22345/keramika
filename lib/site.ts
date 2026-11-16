@@ -16,6 +16,15 @@ export const site = {
   whatsappEnabled: true,
   whatsappNumber: "385955150377",
   area: "Dalmacija i Hercegovina",
+  // Adresa na koju stižu upiti s forme.
+  contactEmail: "ivanmamic1301@gmail.com",
+  // EmailJS – forma šalje e-mail izravno iz preglednika, bez servera.
+  // Upišite 3 vrijednosti iz svog EmailJS računa (emailjs.com) i forma je aktivna:
+  emailjs: {
+    serviceId: "",   // npr. "service_xxxxxxx"
+    templateId: "",  // npr. "template_xxxxxxx"
+    publicKey: "",   // npr. "AbCdEfGhIjKlMnОp"
+  },
 };
 
 export function whatsappLink(text?: string) {

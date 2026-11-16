@@ -1,26 +1,41 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand: #2663ea;
+  --color-brand-dark: #1d4fd0;
+  --color-brand-soft: #eaf0fe;
+  --color-ink: #0b1220;
+  --color-wa: #25d366;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #0b1220;
+  font-family: var(--font-sans);
+}
+
+/* Hero pozadina: tamna podloga s rasterom pločica i plavim odsjajem. */
+.hero-bg {
+  background-color: #0b1220;
+  background-image:
+    radial-gradient(60rem 30rem at 15% -10%, rgba(38, 99, 234, 0.45), transparent 60%),
+    radial-gradient(40rem 24rem at 100% 100%, rgba(38, 99, 234, 0.22), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: auto, auto, 84px 84px, 84px 84px;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
 }

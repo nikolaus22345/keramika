@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Keramika Dalmacija — web stranica
 
-## Getting Started
+Next.js (App Router) + Tailwind. 280 statičkih stranica: naslovna, usluge, regije i 262 landing stranice za mjesta.
 
-First, run the development server:
-
+## Pokretanje
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # provjera prije objave
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Gdje se što mijenja
+- `lib/site.ts` — naziv, telefon, WhatsApp (uključi/isključi), domena
+- `lib/locations.ts` — regije i mjesta (dodavanje mjesta = jedan red)
+- `lib/services.ts` — stranice usluga
+- `lib/landing.ts` — tekstovi landing stranica po vrsti usluge
+- `app/icon.svg`, `public/logo.svg` — favicon i logo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Vercel
+1. Push na GitHub, import repozitorija u Vercel (postavke su zadane za Next.js).
+2. Varijable okruženja:
+   - `NEXT_PUBLIC_SITE_URL` — npr. `https://www.vasa-domena.hr` (za canonical i sitemap)
+   - `RESEND_API_KEY`, `CONTACT_EMAIL` — slanje upita s forme e-mailom (resend.com)
+   - `CONTACT_FROM` — neobavezno, pošiljatelj s verificirane domene
+3. Dok e-mail nije podešen, forma posjetitelju nudi slanje istog upita WhatsAppom ili poziv.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Prije objave: dopuniti `app/politika-privatnosti/page.tsx` podacima obrta/tvrtke.
+Keyword research: `KEYWORD-RESEARCH.md`.
